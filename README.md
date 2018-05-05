@@ -7,6 +7,11 @@ node项目模板
 + 支持打包es5
 
 
+koa热更开发新例子：
+
+[koa-babel-hot-dev](https://github.com/mengdu/node-hot-dev/tree/koa-babel-hot-dev)
+
+
 **安装依赖**
 
 ```ls
