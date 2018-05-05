@@ -4,13 +4,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _demo = require('./demo');
+var _app = require('./app');
 
-var _demo2 = _interopRequireDefault(_demo);
+var _app2 = _interopRequireDefault(_app);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log(_demo2.default);
-// console.log("demo")
+_app2.default.listen(3000);
+_app2.default.log.log('listening on 3000');
 
-exports.default = _demo2.default;
+exports.default = _app2.default;

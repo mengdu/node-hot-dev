@@ -1,22 +1,22 @@
-# node-hot-dev
+# blog-server
 
-node项目模板
+## api 访问规则
+
+```txt
+/api/:module/:action?
+```
+
++ module 模块；必须。
++ action 方法；可选，默认'index'
++ site 网站；可选，从query或者post请求中获取，默认空
+
+最终会会访问 `controller/api/<site>/<module>` 模块的 `<action>` 方法。
+
+## 开发
 
 + 支持热更新（基于nodemon）
 + 支持es6
 + 支持打包es5
-
-
-**安装依赖**
-
-```ls
-yarn
-```
-or
-
-```ls
-npm i
-```
 
 **开发**：
 
@@ -28,4 +28,10 @@ npm run dev
 
 ```ls
 npm run compile
+```
+
+**运行**
+
+```ls
+npm start
 ```

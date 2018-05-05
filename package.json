@@ -1,7 +1,7 @@
 {
-  "name": "node-hot-dev",
+  "name": "blog-server",
   "version": "1.0.0",
-  "description": "node项目模板",
+  "description": "一个博客服务",
   "main": "dest/index.js",
   "scripts": {
     "dev": "nodemon server.js",
@@ -27,5 +27,19 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
     "eslint": "^4.19.1"
+  },
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-compress": "^3.0.0",
+    "koa-favicon": "^2.0.1",
+    "koa-mount": "^3.0.0",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.8.1",
+    "koa-static": "^4.0.2",
+    "node-bugjs": "^2.0.1",
+    "requiresjs": "^1.1.0",
+    "vdjs": "^1.0.0"
   }
 }

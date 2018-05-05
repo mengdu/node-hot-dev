@@ -1,6 +1,11 @@
-import demo from './demo'
+'use strict'
+import app from './app'
 
-console.log(demo)
-// console.log("demo")
+app.listen(3000)
 
-export default demo
+
+app.log.log('start at:', new Date())
+app.log.log('NODE_ENV:', process.env.NODE_ENV)
+app.log.log('listening on 3000')
+
+export default app
