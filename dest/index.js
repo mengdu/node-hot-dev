@@ -11,6 +11,6 @@ var _demo2 = _interopRequireDefault(_demo);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 console.log(_demo2.default);
-// console.log(demo)
+// console.log("demo")
 
 exports.default = _demo2.default;
