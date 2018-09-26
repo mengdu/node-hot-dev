@@ -7,7 +7,7 @@
     "dev": "nodemon server.js",
     "start": "node dest/index.js",
     "compile": "babel src --out-dir dest",
-    "lint": "eslint src",
+    "lint": "eslint --fix src",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
