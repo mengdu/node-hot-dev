@@ -1,10 +1,9 @@
 'use strict'
 import Router from 'koa-router'
 
-const router = new Router()
+export default function (app: { router: any; controller: any; }) {
+  const { router, controller } = app
 
-router.get('/', function (ctx) {
-  ctx.body = 'Hi !\nWellcome here.'
-})
-
-export default router
+  router.get('/', controller.home.index)
+  router.get('/test', controller.home.test)
+}

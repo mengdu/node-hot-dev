@@ -2,8 +2,13 @@
 import BaseController from './base'
 
 class HomeController extends BaseController {
-  index () {
+  async index () {
+    console.log('home.index')
     this.body = { msg: 'home.index' }
+  }
+
+  async test () {
+    this.body = 'Hi'
   }
 }
 

@@ -12,7 +12,8 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "lint": "eslint src --ext .js,.ts",
-    "lintfix": "eslint src --fix --ext .js,.ts"
+    "lintfix": "eslint src --fix --ext .js,.ts",
+    "demo": "nodemon --watch src/**/* -e ts,tsx -i src/typings/**/* --exec node -r ./demo.js -r ts-node/register src/app.ts"
   },
   "keywords": [
     "hot",
@@ -37,6 +38,7 @@
     "typescript": "^3.5.2"
   },
   "dependencies": {
+    "camelcase": "^5.3.1",
     "dotenv": "^8.0.0",
     "koa": "^2.7.0",
     "koa-router": "^7.4.0"
