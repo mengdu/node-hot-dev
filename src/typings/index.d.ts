@@ -1,11 +1,5 @@
-import './controller'
+import IController from './controller'
 
-interface Obj {
-  name: string
+declare namespace App {
+  type Controller = IController
 }
-
-export {
-  Obj
-}
-
-export as namespace App
