@@ -7,6 +7,7 @@ function loadController (app, dir) {
   const dit = {}
 
   for (const key in controllers) {
+    console.log('loader:', controllers[key], '-', key)
     dit[key] = wrapClass(require(controllers[key]).default, app)
   }
 
