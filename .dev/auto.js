@@ -24,7 +24,7 @@ function genereateControllerTyping (files) {
 function main () {
   const files = utils.loaderControllerFiles(path.resolve('./src/controller'), { extend: '.ts', isDeep: true })
   const result = genereateControllerTyping(files)
-  const code = `${result.imports.join('\n')}\n\nexport interface Controller {\n  ${result.code.join(';\n  ')};\n}`
+  const code = `// This file is created by .dev/auto.js\n// Do not modify this file !\n${result.imports.join('\n')}\n\nexport default interface IController {\n  ${result.code.join(';\n  ')};\n}\n`
   
   const controllerPath = path.resolve(tyingsPath, 'controller')
   utils.mkdir(controllerPath)

@@ -4,16 +4,15 @@
   "description": "node项目模板",
   "main": "dest/app.js",
   "scripts": {
-    "dev": "nodemon --watch src/**/* -e ts,tsx --exec ts-node src/app.ts",
-    "dev-debug": "nodemon --inspect --watch src/**/* -e ts,tsx --exec node -r ts-node/register src/app.ts",
+    "dev": "nodemon --watch src/**/* -e ts,tsx -i src/typings/**/* --exec node -r ./.dev/auto.js -r ts-node/register src/app.ts",
+    "dev-debug": "nodemon --inspect --watch src/**/* -e ts,tsx -i src/typings/**/* --exec node -r ./.dev/auto.js -r ts-node/register src/app.ts",
     "clean": "rm dest -rf",
     "compile": "npm run clean && tsc",
     "build": "npm run lint && npm run compile",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "lint": "eslint src --ext .js,.ts",
-    "lintfix": "eslint src --fix --ext .js,.ts",
-    "demo": "nodemon --watch src/**/* -e ts,tsx -i src/typings/**/* --exec node -r ./demo.js -r ts-node/register src/app.ts"
+    "lintfix": "eslint src --fix --ext .js,.ts"
   },
   "keywords": [
     "hot",
