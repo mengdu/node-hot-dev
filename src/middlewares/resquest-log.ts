@@ -9,6 +9,7 @@ interface streamType {
 
 export default function logger (options: { isDev: boolean, stream: streamType  } = { isDev: true, stream: process.stdout }) {
   return async function (ctx: Koa.Context, next: () => void) {
+    if (ctx.path === '/favicon.ico') return await next()
     if (!options.isDev) return await next()
 
     const start = new Date()
