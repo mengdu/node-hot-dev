@@ -9,6 +9,9 @@ import path from 'path'
 import config from './config'
 import loader from '../.dev/loader'
 import logger from './middlewares/resquest-log'
+import prefix from './middlewares/prefix'
+import historyFallback from './middlewares/history-fallback'
+// import historyFallback from '../demo'
 
 const app = new Koa()
 const port = config.port
@@ -39,7 +42,13 @@ app.use(compress({
   flush: require('zlib').Z_SYNC_FLUSH
 }))
 
+// favicon.ico
 app.use(favicon(path.resolve(__dirname, '../favicon.ico')))
+
+app.use(prefix('/dist', historyFallback({
+  index: '/static/dist/index.html'
+})))
+
 // static
 app.use(mount('/static', KoaStatic(path.resolve(__dirname, '../public'), { maxage: 30 * 24 * 60 * 60 })))
 
