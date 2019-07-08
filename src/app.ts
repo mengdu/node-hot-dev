@@ -13,6 +13,16 @@ import logger from './middlewares/resquest-log'
 const app = new Koa()
 const port = config.port
 
+app.use(async (ctx, next) => {
+  try {
+    await next()
+  } catch (err) {
+    ctx.status = 500
+    ctx.body = err.message
+    ctx.app.emit('error', err, ctx)
+  }
+})
+
 app.use(logger())
 app.use(async (ctx, next) => {
   ctx.config = config
