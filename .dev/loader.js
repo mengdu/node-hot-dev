@@ -2,20 +2,20 @@ const path = require('path')
 const Router = require('koa-router')
 const utils = require('./utils')
 
-function loadController (app, dir, errorHandler) {
+function loadController (app, dir) {
   const controllers = utils.loaderControllerFiles(path.resolve(dir), { extend: '.ts', isDeep: true })
   const dit = {}
 
   for (const key in controllers) {
     console.log('loader:', controllers[key], '-', key)
-    dit[key] = wrapClass(require(controllers[key]).default, app, errorHandler)
+    dit[key] = wrapClass(require(controllers[key]).default, app)
   }
 
   return dit
 }
 
 // copy from egg-core
-function wrapClass (Controller, app, errorHandler) {
+function wrapClass (Controller, app) {
 
   let proto = Controller.prototype
   const ret = {}
@@ -29,7 +29,7 @@ function wrapClass (Controller, app, errorHandler) {
       // skip getter, setter & non-function properties
       const d = Object.getOwnPropertyDescriptor(proto, key)
       if (utils.isFun(d.value) && !ret.hasOwnProperty(key)) {
-        ret[key] = methodToMiddleware(Controller, key, app, errorHandler)
+        ret[key] = methodToMiddleware(Controller, key, app)
       }
     }
     proto = Object.getPrototypeOf(proto)
@@ -37,32 +37,23 @@ function wrapClass (Controller, app, errorHandler) {
   return ret
 }
 
-function methodToMiddleware(Controller, key, app, errorHandler) {
+function methodToMiddleware(Controller, key, app) {
   return async function classControllerMiddleware(ctx, next) {
     const controller = new Controller({ app, ctx })
 
-    try {
-      await controller[key]()
-    } catch (err) {
-      if (utils.isFun(errorHandler)) errorHandler(err, ctx, next)
-    }
+    await controller[key]()
   }
 }
 
-function errorHandler (err, ctx) {
-  ctx.status = 500
-  ctx.body = err.message
-  ctx.app.emit('error', err, ctx)
-}
 
 module.exports = function loader (app, options) {
-  options = { controllerDir: 'src/controller', routerFile: '../src/router', errorHandler: errorHandler, ...options }
+  options = { controllerDir: 'src/controller', routerFile: '../src/router', ...options }
   const router = new Router()
   const loadRouter = require(options.routerFile).default
 
   loadRouter({
     router: router,
-    controller: loadController(app, options.controllerDir, options.errorHandler),
+    controller: loadController(app, options.controllerDir),
     application: app
   })
 
