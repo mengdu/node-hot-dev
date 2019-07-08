@@ -13,6 +13,13 @@ import logger from './middlewares/resquest-log'
 const app = new Koa()
 const port = config.port
 
+app.use(logger())
+app.use(async (ctx, next) => {
+  ctx.config = config
+
+  await next()
+})
+
 app.use(async (ctx, next) => {
   try {
     await next()
@@ -21,13 +28,6 @@ app.use(async (ctx, next) => {
     ctx.body = err.message
     ctx.app.emit('error', err, ctx)
   }
-})
-
-app.use(logger())
-app.use(async (ctx, next) => {
-  ctx.config = config
-
-  await next()
 })
 
 // gzip
