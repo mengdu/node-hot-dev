@@ -3,11 +3,11 @@ import BaseController from './base'
 
 class HomeController extends BaseController {
   async index () {
-    console.log('home.index')
-    this.body = { msg: 'home.index' }
+    this.body = 'Hi !\nServer on Koa.'
   }
 
   async test () {
+    throw new Error('xxx')
     this.body = 'Hi'
   }
 }
