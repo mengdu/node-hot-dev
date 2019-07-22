@@ -6,7 +6,6 @@ function sleep () {
   })
 }
 
-
 (async function () {
   await sleep()
   console.log('hello!')

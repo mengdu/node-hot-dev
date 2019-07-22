@@ -1,6 +1,5 @@
 'use strict'
-import {resolve} from 'path'
-
+import { resolve } from 'path'
 
 export default {
   title: 'this is test.',
