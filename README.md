@@ -1,15 +1,10 @@
 # node-hot-dev
 
-node项目模板
+node 项目模板
 
 + 支持热更新（基于nodemon）
 + 支持es6
 + 支持打包es5
-
-
-koa热更开发新例子：
-
-[koa-babel-hot-dev](https://github.com/mengdu/node-hot-dev/tree/koa-babel-hot-dev)
 
 
 **安装依赖**
@@ -29,8 +24,8 @@ npm i
 npm run dev
 ```
 
-**打包**：
+**编译**：
 
 ```ls
-npm run compile
+npm run build
 ```
