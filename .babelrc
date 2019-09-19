@@ -1,21 +1,10 @@
 {
-  "presets": ["env", "stage-2"],
-  "plugins": [
-    "transform-decorators-legacy",
-    [
-      "transform-builtin-extend",
-      {
-        "globals": ["Error", "Array"]
+  "presets": [
+    ["@babel/env", {
+      "targets": {
+        "node": "6.4.0"
       }
-    ],
-    [
-      "transform-runtime",
-      {
-        "helpers": false,
-        "polyfill": false,
-        "regenerator": true,
-        "moduleName": "babel-runtime"
-      }
-    ]
-  ]
+    }]
+  ],
+  "plugins": []
 }
