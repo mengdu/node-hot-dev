@@ -4,10 +4,7 @@
     ".git",
     "node_modules/**/node_modules"
   ],
-  "verbose": true,
-  "execMap": {
-    "js": "node -r @babel/register src/index.js"
-  },
+  "verbose": false,
   "events": {
   },
   "watch": [
