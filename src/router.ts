@@ -16,7 +16,9 @@ function wrapper (Controller: any, action: string) {
     const instance = new Controller(ctx)
     const result = await instance[action](instance, next)
 
-    ctx.body = result
+    if (ctx.body === undefined) {
+      ctx.body = result
+    }
   }
 }
 
