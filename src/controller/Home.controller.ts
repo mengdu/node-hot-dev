@@ -1,7 +1,9 @@
-import BaseController from './Base.controller'
+// eslint-disable-next-line no-unused-vars
+import Controller, { APIResponse } from './controller'
 import { get, post, any } from '../decorators'
+import { CODE } from '../utils/errcode'
 
-class HomeController extends BaseController {
+class HomeController extends Controller {
   @any('/')
   async index () {
     // console.log(this.context.query)
@@ -9,13 +11,17 @@ class HomeController extends BaseController {
   }
 
   @post('/post')
-  async handlePost () {
-    return this.context.request.body
+  async handlePost (): Promise<APIResponse> {
+    return { ret: 0, msg: 'ok', data: this.context.request.body }
   }
 
-  @get('/home')
-  async home () {
-    return 'Home'
+  @get('/test')
+  async home (): Promise<APIResponse> {
+    if (!this.context.query.id) {
+      return this.error(CODE.INVALID_PARAMS, undefined, { query: this.context.query })
+    } else {
+      return this.success()
+    }
   }
 }
 
